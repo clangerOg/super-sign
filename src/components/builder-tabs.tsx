@@ -1,7 +1,7 @@
 'use client';
 
 import * as Tabs from '@radix-ui/react-tabs';
-import { Paintbrush, Store, UserCircle } from 'lucide-react';
+import { LayoutDashboard, Paintbrush, Store, UserCircle } from 'lucide-react';
 import React, { forwardRef } from 'react';
 
 type BuilderTabsProps = Tabs.TabsProps & React.RefAttributes<HTMLDivElement>;
@@ -10,6 +10,10 @@ const tabs: {
   value: string;
   icon: React.ReactNode;
 }[] = [
+  {
+    value: 'layout',
+    icon: <LayoutDashboard />,
+  },
   {
     value: 'personal',
     icon: <UserCircle />,
