@@ -36,7 +36,7 @@ export const BuilderPersonalForm: React.FC<BuilderPersonalFormProps> = (
           const input =
             dictionary.inputs[key as keyof SignatureProps['personal']];
           return (
-            <FormField name={`personal${key}`}>
+            <FormField key={`personal${key}`} name={`personal${key}`}>
               <FormLabel>{input.label}</FormLabel>
               <FormInput
                 type="text"

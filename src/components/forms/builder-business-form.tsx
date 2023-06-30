@@ -36,7 +36,7 @@ export const BuilderBusinessForm: React.FC<BuilderBusinessFormProps> = (
           const input =
             dictionary.inputs[key as keyof SignatureProps['business']];
           return (
-            <FormField name={`business${key}`}>
+            <FormField key={`business${key}`} name={`business${key}`}>
               <FormLabel>{input.label}</FormLabel>
               <FormInput
                 type="text"

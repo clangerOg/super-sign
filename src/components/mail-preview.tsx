@@ -74,3 +74,4 @@ export const MailPreview: React.FC<MailPreviewProps> = forwardRef<
     </div>
   );
 });
+MailPreview.displayName = 'MailPreview';
