@@ -1,9 +1,19 @@
 {
-  "server-component": {
-    "welcome": "Welcome"
+  "dashboard": {
+    "signatures": {
+      "title": "Your Signatures",
+      "create": {
+        "title": "New Signature",
+        "description": "Add a new signature to give a personal touch to your emails."
+      }
+    }
   },
-  "counter": {
-    "increment": "Increment",
-    "decrement": "Decrement"
+  "builder": {
+    "forms": {
+      "layout": {
+        "title": "Layout",
+        "description": "Choose a Layout that fits you needs."
+      }
+    }
   }
 }

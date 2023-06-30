@@ -25,10 +25,7 @@ export default function RootLayout({
     <html lang={params.lang}>
       <body className={inter.className}>
         <main>
-          <SignatureContextProvider>
-            {/*<NavBar />*/}
-            {children}
-          </SignatureContextProvider>
+          <SignatureContextProvider>{children}</SignatureContextProvider>
         </main>
       </body>
     </html>

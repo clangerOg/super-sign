@@ -1,14 +1,24 @@
 import { Container } from '@/components/container';
 import { Shell } from '@/components/shell';
+import { getDictionary } from '@/lib/get-dictionary';
 import { BookmarkPlus } from 'lucide-react';
+import { Locale } from '../../../../i18n-config';
 
-export default function Page() {
+type PageProps = {
+  params: {
+    lang: Locale;
+  };
+};
+
+export default async function Page({ params: { lang } }: PageProps) {
+  const dictionary = await getDictionary(lang);
+
   return (
     <>
       <Shell className="mt-24">
         <Container>
           <p className="text-3xl font-medium text-slate-900">
-            Deine Signaturen
+            {dictionary['dashboard']['signatures'].title}
           </p>
         </Container>
         <Container className="mt-8 grid grid-cols-3">
@@ -17,11 +27,10 @@ export default function Page() {
               <BookmarkPlus size={32} className="text-blue-600" />
 
               <p className="mt-6 text-base font-semibold text-slate-900 group-hover:text-blue-600">
-                Neue Signatur
+                {dictionary['dashboard']['signatures']['create'].title}
               </p>
               <p className="mt-2 text-center text-sm text-slate-500">
-                Füge eine neue Signatur hinzu um deinen Emails einen
-                persönlichen Touch zu verleihen.
+                {dictionary['dashboard']['signatures']['create'].description}
               </p>
             </div>
           </div>

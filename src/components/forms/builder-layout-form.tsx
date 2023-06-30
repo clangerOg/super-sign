@@ -7,16 +7,25 @@ import React from 'react';
 import Image from 'next/image';
 import Layout1 from '../../../public/images/singature-layout-1.png';
 
-type Props = {};
+type BuilderLayoutFormProps = {
+  dictionary: {
+    title: string;
+    description: string;
+  };
+};
 
-export const BuilderLayoutForm: React.FC<Props> = (props) => {
+export const BuilderLayoutForm: React.FC<BuilderLayoutFormProps> = (props) => {
+  const { dictionary } = props;
+
   const { setField, signatureProps } = useSignatureContext();
 
   return (
     <Tabs.Content value="layout">
-      <p className="text-lg font-semibold text-slate-900">Layout</p>
+      <p className="text-lg font-semibold text-slate-900">
+        {props.dictionary.title}
+      </p>
       <p className="mt-2 text-sm font-normal text-slate-500">
-        Wähle ein Layout, das am besten zu dir passt.
+        {props.dictionary.description}
       </p>
       <div className="mt-12 flex flex-col items-center justify-center gap-8 space-y-8">
         <Image

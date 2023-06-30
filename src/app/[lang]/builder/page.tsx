@@ -6,13 +6,22 @@ import { BuilderPersonalForm } from '@/components/forms/builder-personal-form';
 import { MailPreview } from '@/components/mail-preview';
 import { SideBar } from '@/components/side-bar';
 import { SignatureLayout } from '@/components/signatures/layout-1';
+import { getDictionary } from '@/lib/get-dictionary';
+import { Locale } from '../../../../i18n-config';
 
-export default async function Page() {
+type PageProps = {
+  params: {
+    lang: Locale;
+  };
+};
+
+export default async function Page({ params: { lang } }: PageProps) {
+  const dictionary = await getDictionary(lang);
   return (
     <div className="flex flex-row ">
       <SideBar>
         <BuilderTabs>
-          <BuilderLayoutForm />
+          <BuilderLayoutForm dictionary={dictionary.builder.forms.layout} />
           <BuilderBusinessForm />
           <BuilderPersonalForm />
         </BuilderTabs>
