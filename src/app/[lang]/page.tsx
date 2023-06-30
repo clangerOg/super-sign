@@ -11,11 +11,15 @@ type PageProps = {
 export default async function Home({ params: { lang } }: PageProps) {
   const dictionary = await getDictionary(lang);
 
+  if (!dictionary) {
+    return <div>Dictionary not found</div>;
+  }
+
   return (
     <>
       <div>
         <LocaleSwitcher />
-        <p>Current locale: {lang}</p>
+        <p>Current locale: {dictionary.builder.forms.layout.description}</p>
       </div>
     </>
   );

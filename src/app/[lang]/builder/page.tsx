@@ -22,8 +22,8 @@ export default async function Page({ params: { lang } }: PageProps) {
       <SideBar>
         <BuilderTabs>
           <BuilderLayoutForm dictionary={dictionary.builder.forms.layout} />
-          <BuilderBusinessForm />
-          <BuilderPersonalForm />
+          <BuilderBusinessForm dictionary={dictionary.builder.forms.business} />
+          <BuilderPersonalForm dictionary={dictionary.builder.forms.personal} />
         </BuilderTabs>
       </SideBar>
       <Canvas>
