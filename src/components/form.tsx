@@ -49,7 +49,7 @@ export const FormLabel: React.ForwardRefExoticComponent<FormLabelProps> =
         {...other}
         ref={ref}
         className={cn(
-          'mb-2 text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70',
+          'text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70',
           className
         )}
       />
@@ -75,7 +75,7 @@ export const FormInput: React.ForwardRefExoticComponent<FormInputProps> =
           {...other}
           ref={ref}
           className={cn(
-            'flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
+            'mt-2 flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
             className
           )}
         />
@@ -104,7 +104,7 @@ export const FormTextarea: React.ForwardRefExoticComponent<FormTextareaProps> =
           {...other}
           ref={ref}
           className={cn(
-            'flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
+            'mt-2 flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
             className
           )}
         />
@@ -112,3 +112,27 @@ export const FormTextarea: React.ForwardRefExoticComponent<FormTextareaProps> =
     );
   });
 FormTextarea.displayName = 'FormTextarea';
+
+/* -------------------------------------------------------------------------------------------------
+ * FormTextarea
+ * -----------------------------------------------------------------------------------------------*/
+
+type FormDividerProps = React.DetailedHTMLProps<
+  React.HTMLAttributes<HTMLDivElement>,
+  HTMLDivElement
+> &
+  React.RefAttributes<HTMLDivElement>;
+
+export const FormDivider: React.ForwardRefExoticComponent<FormDividerProps> =
+  React.forwardRef<HTMLDivElement, FormDividerProps>((props, ref) => {
+    const { className, ...other } = props;
+
+    return (
+      <div
+        {...other}
+        ref={ref}
+        className={cn('!my-16 h-px w-full bg-slate-200', className)}
+      />
+    );
+  });
+FormDivider.displayName = 'FormDivider';

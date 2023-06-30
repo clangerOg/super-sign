@@ -3,14 +3,14 @@
 import { useSignatureContext } from '@/lib/context/signature-context';
 import * as Tabs from '@radix-ui/react-tabs';
 import React from 'react';
-import { Input } from '../ui/input';
+import { FormField, FormInput, FormLabel } from '../form';
 
 type BuilderBusinessFormProps = {
   dictionary: {
     title: string;
     description: string;
     inputs: {
-      name: {
+      [key in keyof SignatureProps['business']]: {
         label: string;
         placeholder: string;
       };
@@ -23,7 +23,7 @@ export const BuilderBusinessForm: React.FC<BuilderBusinessFormProps> = (
 ) => {
   const { dictionary } = props;
 
-  const { setField, signatureProps, setSignatureProps } = useSignatureContext();
+  const { setField, signatureProps } = useSignatureContext();
 
   return (
     <Tabs.Content value="business">
@@ -32,19 +32,31 @@ export const BuilderBusinessForm: React.FC<BuilderBusinessFormProps> = (
         {dictionary.description}
       </p>
       <div className="mt-12 space-y-8">
-        <div>
-          <p className="mb-2 text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-            {dictionary.inputs.name.label}
-          </p>
-          <Input
-            type="text"
-            value={signatureProps.business.name}
-            placeholder={dictionary.inputs.name.placeholder}
-            onChange={(e) => {
-              setField('business', 'name', e.target.value);
-            }}
-          />
-        </div>
+        {Object.keys(signatureProps.business).map((key) => {
+          const input =
+            dictionary.inputs[key as keyof SignatureProps['business']];
+          return (
+            <FormField name={`business${key}`}>
+              <FormLabel>{input.label}</FormLabel>
+              <FormInput
+                type="text"
+                value={
+                  signatureProps.business[
+                    key as keyof SignatureProps['business']
+                  ]
+                }
+                placeholder={input.placeholder}
+                onChange={(e) => {
+                  setField(
+                    'business',
+                    key as keyof SignatureProps['business'],
+                    e.target.value
+                  );
+                }}
+              />
+            </FormField>
+          );
+        })}
       </div>
     </Tabs.Content>
   );

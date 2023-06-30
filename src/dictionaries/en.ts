@@ -27,6 +27,22 @@ export default {
             label: 'Last Name',
             placeholder: 'Doe',
           },
+          website: {
+            label: 'Website',
+            placeholder: 'https://www.example.com',
+          },
+          adress: {
+            label: 'Adress',
+            placeholder: 'Example Street 1, 12345 Example City',
+          },
+          phone: {
+            label: 'Phone Number',
+            placeholder: '+49 123 456789',
+          },
+          mail: {
+            label: 'Email',
+            placeholder: 'hello@emxaple.com',
+          },
         },
       },
       business: {
@@ -34,8 +50,36 @@ export default {
         description: 'Add information about your business or company.',
         inputs: {
           name: {
-            label: 'Name',
-            placeholder: 'John Doe Inc.',
+            label: 'Company Name',
+            placeholder: 'Example Inc.',
+          },
+          adress: {
+            label: 'Adress',
+            placeholder: 'Example Street 1, 12345 Example City',
+          },
+          website: {
+            label: 'Website',
+            placeholder: 'https://www.example.com',
+          },
+          mail: {
+            label: 'Email',
+            placeholder: 'hello@example.com',
+          },
+          phone: {
+            label: 'Phone Number',
+            placeholder: '+49 123 456789',
+          },
+          department: {
+            label: 'Department',
+            placeholder: 'Sales',
+          },
+          jobDescription: {
+            label: 'Job Description',
+            placeholder: 'CEO',
+          },
+          additionalInformation: {
+            label: 'Additional Information',
+            placeholder: 'Additional Information',
           },
         },
       },

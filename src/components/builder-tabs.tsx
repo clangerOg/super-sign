@@ -35,11 +35,11 @@ export const BuilderTabs: React.ForwardRefExoticComponent<BuilderTabsProps> =
 
     return (
       <Tabs.Root ref={ref} {...other} defaultValue={tabs[0].value}>
-        <div className="h-full w-full px-6 py-12">
+        <div className="h-full w-full px-6 py-12 pb-36">
           <FormRoot> {children}</FormRoot>
         </div>
 
-        <div className="fixed bottom-0 flex w-full max-w-sm items-center justify-between border-t border-inherit p-6">
+        <div className="fixed bottom-0 flex w-full max-w-sm items-center justify-between border-t border-inherit bg-white p-6">
           <Tabs.List className="flex w-full justify-around gap-4">
             {tabs.map((tab, index) => (
               <Tabs.Trigger

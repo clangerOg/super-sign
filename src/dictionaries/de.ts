@@ -27,6 +27,22 @@ export default {
             label: 'Nachname',
             placeholder: 'Mustermann',
           },
+          website: {
+            label: 'Webseite',
+            placeholder: 'https://www.example.com',
+          },
+          adress: {
+            label: 'Adresse',
+            placeholder: 'Musterstraße 1, 12345 Musterstadt',
+          },
+          phone: {
+            label: 'Telefonnummer',
+            placeholder: '+49 123 456789',
+          },
+          mail: {
+            label: 'Email',
+            placeholder: 'hello@emxaple.com',
+          },
         },
       },
       business: {
@@ -36,7 +52,35 @@ export default {
         inputs: {
           name: {
             label: 'Unternehmensname',
-            placeholder: 'Max Mustermann GmbH',
+            placeholder: 'Muster GmbH',
+          },
+          adress: {
+            label: 'Adresse',
+            placeholder: 'Musterstraße 1, 12345 Musterstadt',
+          },
+          website: {
+            label: 'Webseite',
+            placeholder: 'https://www.muster.de',
+          },
+          mail: {
+            label: 'Email',
+            placeholder: 'hello@muster.de',
+          },
+          phone: {
+            label: 'Telefonnummer',
+            placeholder: '+49 123 456789',
+          },
+          department: {
+            label: 'Abteilung',
+            placeholder: 'Vertrieb',
+          },
+          jobDescription: {
+            label: 'Berufs Bezeichnung',
+            placeholder: 'CEO',
+          },
+          additionalInformation: {
+            label: 'Zusätzliche Informationen',
+            placeholder: 'Zusätzliche Informationen',
           },
         },
       },

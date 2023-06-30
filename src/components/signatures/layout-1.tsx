@@ -17,11 +17,11 @@ export const SignatureLayout: React.FC<SignatureLayoutProps> = (props) => {
         <p className="text-lg font-medium text-slate-900">
           {values.personal.firstName} {values.personal.lastName}
         </p>
-        <p>{values.personal.jobDescription}</p>
+        <p>{values.business.jobDescription}</p>
         <p>
-          {values.personal.department} | {values.business.name}
+          {values.business.department} | {values.business.name}
         </p>
-        <p>{values.personal.additionalInformation}</p>
+        <p>{values.business.additionalInformation}</p>
       </div>
 
       <div className="my-8 h-px w-full bg-slate-200" />
@@ -30,7 +30,7 @@ export const SignatureLayout: React.FC<SignatureLayoutProps> = (props) => {
         <div className="flex items-center gap-3">
           <Phone size={16} className="text-blue-600" />
           <p>
-            {values.personal.phonePrivate} | {values.personal.phoneBusiness}
+            {values.personal.phone} | {values.business.phone}
           </p>
         </div>
         <div className="flex items-center gap-3">

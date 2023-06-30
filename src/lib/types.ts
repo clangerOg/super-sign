@@ -15,17 +15,17 @@ type SignatureProps = {
     adress: string;
     website: string;
     mail: string;
+    phone: string;
+    department: string;
+    jobDescription: string;
+    additionalInformation: string;
   };
   personal: {
     firstName: string;
     lastName: string;
-    jobDescription: string;
-    additionalInformation: string;
     website: string;
     adress: string;
-    department: string;
-    phonePrivate: string;
-    phoneBusiness: string;
+    phone: string;
     mail: string;
   };
   socials: {
