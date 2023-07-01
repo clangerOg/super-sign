@@ -1,22 +1,6 @@
 import { SignatureContextProvider } from '@/lib/context/signature-context';
 import { SignatureNotFoundError } from '@/lib/exceptions';
-import clientPromise from '@/lib/mongodb';
-import { ObjectId } from 'mongodb';
-
-async function getSignature(signatureId: string) {
-  const client = await clientPromise;
-  const db = await client.db('super_sign');
-
-  if (ObjectId.isValid(signatureId) === false) return null;
-
-  const id = new ObjectId(signatureId);
-
-  const res = await db.collection('signatures').findOne({
-    _id: id,
-  });
-
-  return res;
-}
+import { getSignature } from '@/lib/models/signature';
 
 export default async function SignatuesLayout({
   children,
@@ -35,10 +19,10 @@ export default async function SignatuesLayout({
     throw new SignatureNotFoundError();
   }
 
-  console.log('signature:', signature);
+  console.log('layoutSiganture:', signature);
 
   return (
-    <SignatureContextProvider signatureProps={signature.signature}>
+    <SignatureContextProvider signatureProps={signature.configuration}>
       {children}
     </SignatureContextProvider>
   );

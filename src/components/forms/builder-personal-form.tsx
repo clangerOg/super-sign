@@ -23,7 +23,7 @@ export const BuilderPersonalForm: React.FC<BuilderPersonalFormProps> = (
 ) => {
   const { dictionary } = props;
 
-  const { setField, signatureProps, setSignatureProps } = useSignatureContext();
+  const { setField, signatureProps } = useSignatureContext();
 
   return (
     <Tabs.Content value="personal">

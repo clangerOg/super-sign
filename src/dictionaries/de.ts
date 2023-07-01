@@ -1,4 +1,11 @@
 export default {
+  components: {
+    signaturePreviewCard: {
+      createdAt: 'Erstellt am',
+      shareBtn: 'Teilen',
+      editBtn: 'Bearbeiten',
+    },
+  },
   dashboard: {
     signatures: {
       title: 'Deine Signaturen',

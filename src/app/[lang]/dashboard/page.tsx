@@ -1,7 +1,10 @@
 import { Container } from '@/components/container';
+import { CreateSignature } from '@/components/create-signature';
 import { Shell } from '@/components/shell';
+import { SignaturePreviewCard } from '@/components/signature-preview-card';
 import { getDictionary } from '@/lib/get-dictionary';
-import { BookmarkPlus } from 'lucide-react';
+import { Signature, getManySignatures } from '@/lib/models/signature';
+import { WithId } from 'mongodb';
 import { Locale } from '../../../../i18n-config';
 
 type PageProps = {
@@ -13,27 +16,27 @@ type PageProps = {
 export default async function Page({ params: { lang } }: PageProps) {
   const dictionary = await getDictionary(lang);
 
+  const signatures: WithId<Signature>[] = await getManySignatures();
+
   return (
     <>
       <Shell className="mt-24">
         <Container>
-          <p className="text-3xl font-medium text-slate-900">
+          <h2 className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0">
             {dictionary['dashboard']['signatures'].title}
-          </p>
+          </h2>
         </Container>
-        <Container className="mt-8 grid grid-cols-3">
-          <div className="group flex h-72 cursor-pointer flex-col items-center justify-center gap-8 rounded-lg border-2 border-dashed border-slate-200 transition-colors hover:border-blue-600 hover:bg-slate-50">
-            <div className="flex flex-col items-center justify-center p-6">
-              <BookmarkPlus size={32} className="text-blue-600" />
-
-              <p className="mt-6 text-base font-semibold text-slate-900 group-hover:text-blue-600">
-                {dictionary['dashboard']['signatures']['create'].title}
-              </p>
-              <p className="mt-2 text-center text-sm text-slate-500">
-                {dictionary['dashboard']['signatures']['create'].description}
-              </p>
-            </div>
-          </div>
+        <Container className="mt-8 grid grid-cols-3 gap-8">
+          {signatures.map((signature) => {
+            return (
+              <SignaturePreviewCard
+                dictionary={dictionary['components']['signaturePreviewCard']}
+                key={`sign-${signature._id.toString()}`}
+                signature={signature}
+              />
+            );
+          })}
+          <CreateSignature />
         </Container>
       </Shell>
     </>

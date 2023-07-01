@@ -1,7 +1,7 @@
 'client-only';
 'use client';
 
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import { defaultSignatureValues } from '../utils';
 
 export type SignatureContextProps = {
@@ -53,6 +53,14 @@ export const SignatureContextProvider: React.FC<
   const [signatureProps, setSignatureProps] = useState<SignatureProps>(
     parentProps || defaultSignatureValues
   );
+
+  useEffect(() => {
+    console.log('parentProps:', parentProps);
+  }, [parentProps]);
+
+  useEffect(() => {
+    console.log('signatureProps:', signatureProps);
+  }, [signatureProps]);
 
   return (
     <SignatureContext.Provider
