@@ -1,49 +1,8 @@
 'client-only';
 'use client';
 
-import React, {
-  PropsWithChildren,
-  createContext,
-  useContext,
-  useState,
-} from 'react';
-
-const signatureValues: SignatureProps = {
-  design: {},
-  business: {
-    name: 'OrbitGrowth Webdesign Agentur',
-    adress: 'Meisterstraße 5, 40573 Meierhausen',
-    website: 'https://google.com',
-    mail: 'peter@lustig.de',
-    department: 'Human Recruitment',
-    jobDescription: 'Webdesigner',
-    phone: '0 123 456789',
-    additionalInformation: '',
-  },
-  personal: {
-    firstName: 'Peter',
-    lastName: 'Maffay',
-    website: 'https://google.com',
-    adress: 'Meisterstraße 5, 40573 Meierhausen',
-    phone: '0 123 456789',
-    mail: 'peter@lustig.de',
-  },
-  socials: {
-    facebook: 'https://facebook.com',
-    twitter: 'https://twitter.com',
-    linkedin: 'https://linkedin.com',
-    xing: 'https://xing.com',
-    instagram: 'https://instagram.com',
-    youtube: 'https://youtube.com',
-    pinterest: 'https://pinterest.com',
-  },
-  settings: {
-    mailClickable: true,
-    phoneClickable: true,
-    icons: true,
-    revertArrangement: false,
-  },
-};
+import React, { createContext, useContext, useState } from 'react';
+import { defaultSignatureValues } from '../utils';
 
 export type SignatureContextProps = {
   signatureProps: SignatureProps;
@@ -52,7 +11,7 @@ export type SignatureContextProps = {
 
 export const SignatureContext = createContext<SignatureContextProps>({
   setSignatureProps: () => null,
-  signatureProps: signatureValues,
+  signatureProps: defaultSignatureValues,
 });
 
 export const useSignatureContext = () => {
@@ -82,13 +41,18 @@ export const useSignatureContext = () => {
   return { signatureProps, setSignatureProps, setField };
 };
 
-export const SignatureContextProvider: React.FC<PropsWithChildren> = (
-  props
-) => {
-  const { children } = props;
+type SignatureContextProviderProps = React.PropsWithChildren & {
+  signatureProps?: SignatureProps;
+};
 
-  const [signatureProps, setSignatureProps] =
-    useState<SignatureProps>(signatureValues);
+export const SignatureContextProvider: React.FC<
+  SignatureContextProviderProps
+> = (props) => {
+  const { signatureProps: parentProps, children } = props;
+
+  const [signatureProps, setSignatureProps] = useState<SignatureProps>(
+    parentProps || defaultSignatureValues
+  );
 
   return (
     <SignatureContext.Provider

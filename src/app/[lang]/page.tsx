@@ -1,3 +1,4 @@
+import { CreateSignature } from '@/components/create-signature';
 import LocaleSwitcher from '@/components/locale-switcher';
 import { getDictionary } from '@/lib/get-dictionary';
 import { Locale } from '../../../i18n-config';
@@ -20,6 +21,7 @@ export default async function Home({ params: { lang } }: PageProps) {
       <div>
         <LocaleSwitcher />
         <p>Current locale: {dictionary.builder.forms.layout.description}</p>
+        <CreateSignature />
       </div>
     </>
   );

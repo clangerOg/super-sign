@@ -1,3 +1,4 @@
+import { Toaster } from '@/components/ui/toaster';
 import { SignatureContextProvider } from '@/lib/context/signature-context';
 import { Inter } from 'next/font/google';
 import { i18n } from '../../../i18n-config';
@@ -25,7 +26,10 @@ export default function RootLayout({
     <html lang={params.lang}>
       <body className={inter.className}>
         <main>
-          <SignatureContextProvider>{children}</SignatureContextProvider>
+          <SignatureContextProvider>
+            {children}
+            <Toaster />
+          </SignatureContextProvider>
         </main>
       </body>
     </html>
