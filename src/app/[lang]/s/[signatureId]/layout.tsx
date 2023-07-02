@@ -22,7 +22,10 @@ export default async function SignatuesLayout({
   console.log('layoutSiganture:', signature);
 
   return (
-    <SignatureContextProvider signatureProps={signature.configuration}>
+    <SignatureContextProvider
+      signatureProps={signature.configuration}
+      signatureId={signature._id.toString()}
+    >
       {children}
     </SignatureContextProvider>
   );

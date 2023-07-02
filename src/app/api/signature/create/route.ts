@@ -7,18 +7,6 @@ export type CreateSignatureApiBody = {
 
 export async function POST(request: NextRequest) {
   try {
-    /*
-    const client = await clientPromise;
-    const db = client.db('super_sign');
-
-    const signatureData: CreateSignatureApiBody = await request.json();
-
-    const result = await db.collection('signatures').insertOne({
-      title: 'New Signature',
-      signature: signatureData,
-    });
-    */
-
     const body = await request.json();
     const { data } = body as CreateSignatureApiBody;
 

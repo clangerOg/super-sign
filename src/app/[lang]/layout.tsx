@@ -1,4 +1,3 @@
-import { NavBar } from '@/components/nav-bar';
 import { Toaster } from '@/components/ui/toaster';
 import { Inter } from 'next/font/google';
 import { i18n } from '../../../i18n-config';
@@ -25,7 +24,6 @@ export default function RootLayout({
   return (
     <html lang={params.lang}>
       <body className={inter.className}>
-        <NavBar />
         <main>
           {children}
           <Toaster />

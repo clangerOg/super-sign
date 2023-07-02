@@ -7,15 +7,18 @@ import { defaultSignatureValues } from '../utils';
 export type SignatureContextProps = {
   signatureProps: SignatureProps;
   setSignatureProps: React.Dispatch<React.SetStateAction<SignatureProps>>;
+  signatureId: string;
 };
 
 export const SignatureContext = createContext<SignatureContextProps>({
   setSignatureProps: () => null,
   signatureProps: defaultSignatureValues,
+  signatureId: '',
 });
 
 export const useSignatureContext = () => {
-  const { signatureProps, setSignatureProps } = useContext(SignatureContext);
+  const { signatureProps, setSignatureProps, signatureId } =
+    useContext(SignatureContext);
 
   function setField<P extends SignatureProps, T extends keyof P>(
     topLevel: T,
@@ -38,17 +41,18 @@ export const useSignatureContext = () => {
     }));
   }
 
-  return { signatureProps, setSignatureProps, setField };
+  return { signatureProps, setSignatureProps, setField, signatureId };
 };
 
 type SignatureContextProviderProps = React.PropsWithChildren & {
   signatureProps?: SignatureProps;
+  signatureId?: string;
 };
 
 export const SignatureContextProvider: React.FC<
   SignatureContextProviderProps
 > = (props) => {
-  const { signatureProps: parentProps, children } = props;
+  const { signatureProps: parentProps, signatureId, children } = props;
 
   const [signatureProps, setSignatureProps] = useState<SignatureProps>(
     parentProps || defaultSignatureValues
@@ -67,6 +71,7 @@ export const SignatureContextProvider: React.FC<
       value={{
         setSignatureProps: setSignatureProps,
         signatureProps: signatureProps,
+        signatureId: `${signatureId}`,
       }}
     >
       {children}

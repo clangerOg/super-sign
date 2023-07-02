@@ -50,7 +50,7 @@ export const SignaturePreviewCard: React.ForwardRefExoticComponent<SignaturePrev
             })}
             href={`/s/${signature._id}/builder`}
           >
-            {dictionary.editBtn}sdfsdf
+            {dictionary.editBtn}
             <Settings2 size={16} className="text-slate-300" />
           </Link>
         </CardFooter>

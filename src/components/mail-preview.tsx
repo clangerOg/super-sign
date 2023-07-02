@@ -41,6 +41,7 @@ export const MailPreview: React.FC<MailPreviewProps> = forwardRef<
         </div>
       </div>
       <div className="p-4 text-sm text-slate-500">
+        {/**
         <p>
           Hello everybody,
           <br />
@@ -56,6 +57,8 @@ export const MailPreview: React.FC<MailPreviewProps> = forwardRef<
           <br />
           Thanks a lot, Peter
         </p>
+        */}
+
         <div className="my-8">{children}</div>
       </div>
       <div className="flex flex-row-reverse items-center gap-4 border-t border-slate-200 p-4 text-slate-500">
