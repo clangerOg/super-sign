@@ -43,3 +43,4 @@ export const BuilderSidebarNav: React.ForwardRefExoticComponent<BuilderSidebarNa
       </div>
     );
   });
+BuilderSidebarNav.displayName = 'BuilderSidebarNav';

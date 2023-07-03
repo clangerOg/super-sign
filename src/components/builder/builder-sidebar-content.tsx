@@ -23,3 +23,4 @@ export const BuilderSidebarContent: React.ForwardRefExoticComponent<BuilderSideb
       );
     }
   );
+BuilderSidebarContent.displayName = 'BuilderSidebarContent';
