@@ -1,7 +1,6 @@
 'use client';
 
 import { useSignatureContext } from '@/lib/context/signature-context';
-import { SignatureProps } from '@/lib/types';
 import * as Tabs from '@radix-ui/react-tabs';
 import React from 'react';
 import { FormField, FormInput, FormLabel } from '../form';

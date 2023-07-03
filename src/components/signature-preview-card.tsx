@@ -2,6 +2,7 @@ import { Dictionary } from '@/dictionaries/types';
 import { Signature } from '@/lib/models/signature';
 import { cn } from '@/lib/utils';
 import { LinkIcon, Settings2 } from 'lucide-react';
+import { WithId } from 'mongodb';
 import Link from 'next/link';
 import { forwardRef } from 'react';
 import { Button, buttonVariants } from './ui/button';
@@ -14,7 +15,7 @@ import {
 } from './ui/card';
 
 type SignaturePreviewCardProps = ComponentPropsWithoutRef<'div'> & {
-  signature: WithDocId<Signature>;
+  signature: WithId<Signature>;
   dictionary: Dictionary['components']['signaturePreviewCard'];
 };
 

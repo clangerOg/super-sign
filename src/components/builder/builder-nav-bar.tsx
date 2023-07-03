@@ -72,3 +72,4 @@ export const BuilderNavbar: React.ForwardRefExoticComponent<BuilderNavbarProps> 
       </nav>
     );
   });
+BuilderNavbar.displayName = 'BuilderNavbar';

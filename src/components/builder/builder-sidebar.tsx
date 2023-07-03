@@ -22,3 +22,4 @@ export const BuilderSidebar: React.ForwardRefExoticComponent<BuilderSidebarProps
       </Tabs.Root>
     );
   });
+BuilderSidebar.displayName = 'BuilderSidebar';
