@@ -1,3 +1,5 @@
+import { Dictionary } from './types';
+
 export default {
   components: {
     signaturePreviewCard: {
@@ -93,4 +95,4 @@ export default {
       },
     },
   },
-} as const;
+} as const as Dictionary;

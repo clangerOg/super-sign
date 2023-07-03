@@ -1,9 +1,11 @@
 import { Container } from '@/components/container';
+import { CreateSignature } from '@/components/create-signature';
 import { SignaturePreviewGrid } from '@/components/lobby/signature-preview-grid';
 import { Shell } from '@/components/shell';
-import { Button } from '@/components/ui/button';
+import { columns } from '@/components/sign-preview-table/columns';
+import { PreviewTable } from '@/components/sign-preview-table/preview-table';
 import { Input } from '@/components/ui/input';
-import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { getDictionary } from '@/lib/get-dictionary';
 import { Signature, getManySignatures } from '@/lib/models/signature';
 import { GridIcon, ListIcon } from 'lucide-react';
@@ -27,7 +29,9 @@ export default async function Home({ params: { lang } }: PageProps) {
     <>
       <Shell className="mt-6">
         <Container className="flex items-center justify-between space-y-2">
-          <h2 className="text-3xl font-bold tracking-tight">Dashboard</h2>
+          <h2 className="text-3xl font-bold tracking-tight">
+            {dictionary['dashboard']['signatures'].title}
+          </h2>
         </Container>
         <Tabs defaultValue="grid" className="w-full">
           <Container className="mt-12 flex items-center justify-between">
@@ -46,7 +50,7 @@ export default async function Home({ params: { lang } }: PageProps) {
                 </TabsTrigger>
               </TabsList>
 
-              <Button>New Signature</Button>
+              <CreateSignature />
             </div>
           </Container>
 
@@ -55,6 +59,9 @@ export default async function Home({ params: { lang } }: PageProps) {
               signatures={signatures}
               dictionary={dictionary['components']}
             />
+            <TabsContent value="list">
+              <PreviewTable columns={columns} data={signatures} />
+            </TabsContent>
           </Container>
         </Tabs>
       </Shell>

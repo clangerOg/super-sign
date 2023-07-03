@@ -1,6 +1,7 @@
 import { Dictionary } from '@/dictionaries/types';
 import { Signature } from '@/lib/models/signature';
 import { WithId } from 'mongodb';
+import Link from 'next/link';
 import { forwardRef } from 'react';
 import { buttonVariants } from '../ui/button';
 import {
@@ -47,11 +48,15 @@ export const SignaturePreviewCard: React.ForwardRefExoticComponent<SignaturePrev
                 variant: 'outline',
                 size: 'sm',
               })}
-            ></DropdownMenuTrigger>
+            >
+              {dictionary['actionBtn']}
+            </DropdownMenuTrigger>
             <DropdownMenuContent>
               <DropdownMenuLabel>My Account</DropdownMenuLabel>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>Profile</DropdownMenuItem>
+              <Link href={`/s/${signature._id}/builder`}>
+                <DropdownMenuItem>Bearbeiten</DropdownMenuItem>
+              </Link>
               <DropdownMenuItem>Billing</DropdownMenuItem>
               <DropdownMenuItem>Team</DropdownMenuItem>
               <DropdownMenuItem>Subscription</DropdownMenuItem>

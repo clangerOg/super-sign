@@ -4,10 +4,10 @@ import { CreateSignatureApiBody } from '@/app/api/signature/create/route';
 import { Signature } from '@/lib/models/signature';
 import { defaultSignatureValues } from '@/lib/utils';
 import axios from 'axios';
-import { BookmarkPlus, Plus } from 'lucide-react';
+import { Plus } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { Button } from './ui/button';
+import { Button, buttonVariants } from './ui/button';
 import {
   Dialog,
   DialogContent,
@@ -74,19 +74,8 @@ export const CreateSignature: React.FC = () => {
 
   return (
     <Dialog>
-      <DialogTrigger>
-        <div className="group flex h-72 cursor-pointer flex-col items-center justify-center gap-8 rounded-lg border-2 border-dashed border-slate-200 transition-colors hover:border-blue-600 hover:bg-slate-50">
-          <div className="flex flex-col items-center justify-center p-6">
-            <BookmarkPlus size={32} className="text-blue-600" />
-
-            <p className="mt-6 text-base font-semibold text-slate-900 group-hover:text-blue-600">
-              Create new signature
-            </p>
-            <p className="mt-2 text-center text-sm text-slate-500">
-              Create a new signature to start your journey
-            </p>
-          </div>
-        </div>
+      <DialogTrigger className={buttonVariants({ variant: 'default' })}>
+        New Signature
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
