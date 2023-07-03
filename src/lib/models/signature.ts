@@ -6,6 +6,7 @@ const COLLECTION = 'signatures';
 
 export interface Signature {
   createdAt: number;
+  description?: string;
   title: string;
   configuration: SignatureProps;
   settings: {

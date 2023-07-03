@@ -4,6 +4,7 @@ export type Dictionary = {
       createdAt: string;
       shareBtn: string;
       editBtn: string;
+      actionBtn: string;
     };
   };
   dashboard: {
