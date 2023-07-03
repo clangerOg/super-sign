@@ -4,6 +4,7 @@ export default {
       createdAt: 'Erstellt am',
       shareBtn: 'Teilen',
       editBtn: 'Bearbeiten',
+      actionBtn: 'Aktionen',
     },
   },
   dashboard: {

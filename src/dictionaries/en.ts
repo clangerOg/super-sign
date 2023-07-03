@@ -4,6 +4,7 @@ export default {
       createdAt: 'Created at',
       shareBtn: 'Share',
       editBtn: 'Edit',
+      actionBtn: 'Actions',
     },
   },
   dashboard: {
