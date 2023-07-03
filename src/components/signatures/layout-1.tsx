@@ -7,7 +7,9 @@ import React from 'react';
 type SignatureLayoutProps = {};
 
 export const SignatureLayout: React.FC<SignatureLayoutProps> = (props) => {
-  const { signatureProps: values } = useSignatureContext();
+  const {
+    signature: { configuration: values },
+  } = useSignatureContext();
 
   //const { values } = props;
 

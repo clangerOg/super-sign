@@ -1,6 +1,7 @@
 'use client';
 
 import { useSignatureContext } from '@/lib/context/signature-context';
+import { SignatureProps } from '@/lib/types';
 import * as Tabs from '@radix-ui/react-tabs';
 import React from 'react';
 import { FormField, FormInput, FormLabel } from '../form';
@@ -23,7 +24,7 @@ export const BuilderBusinessForm: React.FC<BuilderBusinessFormProps> = (
 ) => {
   const { dictionary } = props;
 
-  const { setField, signatureProps } = useSignatureContext();
+  const { signature, setField } = useSignatureContext();
 
   return (
     <Tabs.Content value="business">
@@ -32,7 +33,7 @@ export const BuilderBusinessForm: React.FC<BuilderBusinessFormProps> = (
         {dictionary.description}
       </p>
       <div className="mt-12 space-y-8">
-        {Object.keys(signatureProps.business).map((key) => {
+        {Object.keys(signature['configuration'].business).map((key) => {
           const input =
             dictionary.inputs[key as keyof SignatureProps['business']];
           return (
@@ -41,7 +42,7 @@ export const BuilderBusinessForm: React.FC<BuilderBusinessFormProps> = (
               <FormInput
                 type="text"
                 value={
-                  signatureProps.business[
+                  signature['configuration'].business[
                     key as keyof SignatureProps['business']
                   ]
                 }

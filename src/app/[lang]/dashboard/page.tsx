@@ -4,7 +4,6 @@ import { Shell } from '@/components/shell';
 import { SignaturePreviewCard } from '@/components/signature-preview-card';
 import { getDictionary } from '@/lib/get-dictionary';
 import { Signature, getManySignatures } from '@/lib/models/signature';
-import { WithId } from 'mongodb';
 import { Locale } from '../../../../i18n-config';
 
 type PageProps = {
@@ -16,7 +15,7 @@ type PageProps = {
 export default async function Page({ params: { lang } }: PageProps) {
   const dictionary = await getDictionary(lang);
 
-  const signatures: WithId<Signature>[] = await getManySignatures();
+  const signatures: WithDocId<Signature>[] = await getManySignatures();
 
   return (
     <>

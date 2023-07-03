@@ -23,7 +23,7 @@ export const BuilderPersonalForm: React.FC<BuilderPersonalFormProps> = (
 ) => {
   const { dictionary } = props;
 
-  const { setField, signatureProps } = useSignatureContext();
+  const { setField, signature } = useSignatureContext();
 
   return (
     <Tabs.Content value="personal">
@@ -32,7 +32,7 @@ export const BuilderPersonalForm: React.FC<BuilderPersonalFormProps> = (
         {dictionary.description}
       </p>
       <div className="mt-12 space-y-8">
-        {Object.keys(signatureProps.personal).map((key) => {
+        {Object.keys(signature['configuration'].personal).map((key) => {
           const input =
             dictionary.inputs[key as keyof SignatureProps['personal']];
           return (
@@ -41,7 +41,7 @@ export const BuilderPersonalForm: React.FC<BuilderPersonalFormProps> = (
               <FormInput
                 type="text"
                 value={
-                  signatureProps.personal[
+                  signature['configuration'].personal[
                     key as keyof SignatureProps['personal']
                   ]
                 }
