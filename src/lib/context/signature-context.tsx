@@ -2,23 +2,53 @@
 'use client';
 
 import React, { createContext, useContext, useEffect, useState } from 'react';
+import { Signature } from '../models/signature';
 import { defaultSignatureValues } from '../utils';
 
 export type SignatureContextProps = {
-  signatureProps: SignatureProps;
-  setSignatureProps: React.Dispatch<React.SetStateAction<SignatureProps>>;
-  signatureId: string;
+  signature: WithDocId<Signature>;
+  setSignature: React.Dispatch<React.SetStateAction<WithDocId<Signature>>>;
 };
 
 export const SignatureContext = createContext<SignatureContextProps>({
-  setSignatureProps: () => null,
-  signatureProps: defaultSignatureValues,
-  signatureId: '',
+  setSignature: () => null,
+  signature: {
+    _id: '000000000000000000000000',
+    createdAt: Date.now(),
+    settings: {
+      public: false,
+    },
+    title: 'New Signature',
+    configuration: defaultSignatureValues,
+  },
 });
 
 export const useSignatureContext = () => {
-  const { signatureProps, setSignatureProps, signatureId } =
-    useContext(SignatureContext);
+  const { signature, setSignature } = useContext(SignatureContext);
+
+  /** 
+  function setField<P extends SignatureProps, T extends keyof P>(
+    topLevel: T,
+    field: keyof P[T],
+    value: P[typeof topLevel][typeof field]
+  ) {
+    const topLevelval = topLevel as
+      | 'design'
+      | 'business'
+      | 'personal'
+      | 'socials'
+      | 'settings';
+
+    setSignature((prevState) => ({
+      ...prevState,
+      configuration: {
+        [topLevel]: {
+          ...prevState['configuration'][topLevelval],
+          [field]: value,
+        },
+      },
+    }));
+  }*/
 
   function setField<P extends SignatureProps, T extends keyof P>(
     topLevel: T,
@@ -32,46 +62,57 @@ export const useSignatureContext = () => {
       | 'socials'
       | 'settings';
 
-    setSignatureProps((prevState) => ({
+    setSignature((prevState: WithDocId<Signature>) => ({
       ...prevState,
-      [topLevel]: {
-        ...prevState[topLevelval],
-        [field]: value,
+      configuration: {
+        ...prevState['configuration'],
+        [topLevel]: {
+          ...prevState['configuration'][topLevelval],
+          [field]: value,
+        },
       },
     }));
   }
 
-  return { signatureProps, setSignatureProps, setField, signatureId };
+  return { signature, setSignature, setField };
 };
 
 type SignatureContextProviderProps = React.PropsWithChildren & {
-  signatureProps?: SignatureProps;
-  signatureId?: string;
+  signature: WithDocId<Signature>;
 };
 
 export const SignatureContextProvider: React.FC<
   SignatureContextProviderProps
 > = (props) => {
-  const { signatureProps: parentProps, signatureId, children } = props;
+  const { signature: inheritedSignature, children } = props;
 
-  const [signatureProps, setSignatureProps] = useState<SignatureProps>(
-    parentProps || defaultSignatureValues
+  const [signature, setSignature] = useState<WithDocId<Signature>>(
+    inheritedSignature || {
+      _id: '000000000000000000000000',
+      title: 'New Signature',
+      createdAt: Date.now(),
+      settings: {
+        public: false,
+      },
+      configuration: defaultSignatureValues,
+    }
   );
 
+  // DEBUG
   useEffect(() => {
-    console.log('parentProps:', parentProps);
-  }, [parentProps]);
+    console.log('parentProps:', inheritedSignature);
+  }, [inheritedSignature]);
 
+  // DEBUG
   useEffect(() => {
-    console.log('signatureProps:', signatureProps);
-  }, [signatureProps]);
+    console.log('signatureProps:', signature);
+  }, [signature]);
 
   return (
     <SignatureContext.Provider
       value={{
-        setSignatureProps: setSignatureProps,
-        signatureProps: signatureProps,
-        signatureId: `${signatureId}`,
+        signature,
+        setSignature,
       }}
     >
       {children}

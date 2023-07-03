@@ -59,21 +59,25 @@ export async function createSignature(
 }
 
 export async function updateSignature(
-  _id: string | ObjectId,
-  signature: Signature
+  signature: WithDocId<Signature>
 ): Promise<WithId<Signature> | null> {
   // parse id to ObjectId
-  const id: ObjectId = new ObjectId(_id);
+  const id: ObjectId = new ObjectId(signature._id);
 
   // get client, db and collection
   const client = await clientPromise;
   const db = client.db(DB);
   const collection = db.collection<Signature>(COLLECTION);
 
+  const parsedSignature: WithId<Signature> = {
+    ...signature,
+    _id: id,
+  };
+
   // update signature in collection by id
   const response = await collection.findOneAndUpdate(
     { _id: id },
-    { $set: signature }
+    { $set: parsedSignature }
   );
 
   // return signature

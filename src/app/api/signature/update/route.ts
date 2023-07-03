@@ -3,8 +3,7 @@ import { NextResponse } from 'next/server';
 
 export type UpdateSignatureApiBody = {
   data: {
-    _id: string;
-    update: Signature;
+    update: WithDocId<Signature>;
   };
 };
 
@@ -13,7 +12,7 @@ export async function PUT(request: Request) {
     const body = await request.json();
     const { data } = body as UpdateSignatureApiBody;
 
-    const response = await updateSignature(data._id, data.update);
+    const response = await updateSignature(data.update);
 
     return new Response(JSON.stringify({ response }), {
       headers: { 'content-type': 'application/json' },

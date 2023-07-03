@@ -17,23 +17,15 @@ export const BuilderNavbar: React.ForwardRefExoticComponent<BuilderNavbarProps> 
   forwardRef<BuilderNavbarElement, BuilderNavbarProps>((props, ref) => {
     const { className, ...other } = props;
 
-    const { signatureProps, signatureId } = useSignatureContext();
+    const { signature } = useSignatureContext();
     const { toast } = useToast();
 
     const updateSignature = async () => {
       try {
-        const bodyData: Signature = {
-          title: 'SOME TITLE',
-          createdAt: Date.now(),
-          configuration: signatureProps,
-          settings: {
-            public: true,
-          },
-        };
+        const bodyData: WithDocId<Signature> = signature;
 
         const body: UpdateSignatureApiBody = {
           data: {
-            _id: signatureId,
             update: bodyData,
           },
         };

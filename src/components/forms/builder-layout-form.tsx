@@ -15,7 +15,7 @@ type BuilderLayoutFormProps = {
 export const BuilderLayoutForm: React.FC<BuilderLayoutFormProps> = (props) => {
   const { dictionary } = props;
 
-  const { setField, signatureProps } = useSignatureContext();
+  const { setField, signature } = useSignatureContext();
 
   return (
     <Tabs.Content value="layout">
